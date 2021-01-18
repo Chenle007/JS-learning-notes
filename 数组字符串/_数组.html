@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+
+                数组：用一个变量存储一堆数据的数据结构
+
+                声明数组：
+                    1.通过new创建数组
+                        var arr = new Array（）；
+                    2.省略new创建数组
+                     【注】
+                     上述两种方法，传入参数只有一个并且是数字时，是直接声明一个长度为10的数组，不是一个数据。
+                    3.数组常量进行赋值
+                        var arr = []；
+
+                    数组的属性：
+                        数组.length 返回数组【元素】的个数
+                        访问数组的元素：
+                            数组[下标]; ,下标从0开始。
+
+            */
+
+            /*
+
+                【注】数组和循环是天生一对。
+                Math.random() 随机0~1
+                随机 0~9 的数：parseInt(Math.random() * 10)
+            */
+            //生成十个随机数，放入数组中
+            var arr = new Array(10);//创建一个长度为10的数组
+            for (var i = 0; i < arr.length; i++){
+                arr[i] = parseInt(Math.random() * 10);
+            }
+            alert(arr);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

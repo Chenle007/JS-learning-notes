@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            height: 200px;
+        }
+        .box{
+            height: 200px;
+        }
+    </style>
+    <script>
+        //获取当前有效样式
+        window.onload = function (){
+            var oDiv = document.getElementById("div1");
+            alert(getStyle(oDiv,"height"))
+
+            var oBtn = document.getElementById("btn");
+            oBtn.onclick = function (){
+                oDiv.style.backgroundColor = "blue";
+                oDiv.style.width = "400px"
+            }
+        }
+        function getStyle(node, cssStyle){
+            //IE ： 火狐 谷歌
+            return node.currentstyle ? node.currentstyle[cssStyle] : getComputedStyle(node)[cssStyle];
+        }
+
+    </script>
+</head>
+<body>
+    <div id="div1" class="box" style="width: 100px;background-color: red"; >11</div>
+    <button id="btn">更改样式</button>
+</body>
+</html>

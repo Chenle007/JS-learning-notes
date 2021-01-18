@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                验证码:验证你是否为机器人
+
+                随机生成六位验证码
+             */
+            //n位验证码，范围为 0 ~ 9  parseInt(Math.random() * 10);
+            function numTestCode(n){
+                var arr = []; //存储生成数字
+                for (var i = 0; i < n; i++){
+                    var num = parseInt(Math.random() * 10);
+                    arr.push(num);
+                }
+                return arr.join("");
+            }
+            alert(numTestCode(6));
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

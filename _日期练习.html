@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                获取两个日期之间相差的天数
+             */
+
+            /*
+                传入的格式：
+                "2000-01-01"
+             */
+            function countOfDate(day1,day2){
+                var d1 = new Date(day1);
+                var d2 = new Date(day2);
+
+                var time1 = d1.getTime();
+                var time2 = d2.getTime();
+                var time = Math.abs(time1 - time2);
+                return parseInt(time / 1000 / 3600 / 24);
+            }
+            alert(countOfDate("2000-09-14","2021-01-16"));
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

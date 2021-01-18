@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                车 时速60km/h  路：1000km 需要多久跑完
+             */
+
+            //定义一辆车 时速是60
+            var car ={
+                speed : 60,
+                //功能是跑在路上
+                run : function (road){
+                   return  road.length / car.speed;
+                }
+            }
+            //定义一座桥 他有1000公里
+            var bridge = {
+                length : 1000,
+            }
+            //让车跑在桥上得出所花费的时间
+            var hour = car.run(bridge)
+            alert("总共花了" + hour + "小时")
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #second{
+                width: 100px;height: 150px;
+                border: 1px solid black;
+                text-align: center;
+                padding: 40px;
+                margin: 50px auto;
+                background: darkcyan;
+                color: white;
+            }
+            #second button{
+                width: 100px;height: 30px;
+                border: 1px solid cadetblue;
+                margin-top: 20px;
+                border-radius: 10px;
+            }
+        </style>
+        <script>
+            //通过id获取标签进行简化操作
+            function $(id){
+                return document.getElementById(id);
+            }
+
+            var i = 0; //总秒数
+            var timer = null; //记录定时器的返回值
+            var isRuning = false; //代表当前定时器是否运行
+            window.onload = function (){
+                //获取按钮
+                function startFunc(){
+                    timer = setInterval(function (){
+                        i++;
+                        $("sec").innerHTML = doubleNum(i % 60);
+                        $("min").innerHTML = doubleNum(parseInt(i / 60) % 60);
+                        $("hour").innerHTML = doubleNum(parseInt(i / 3600));
+                    }, 100)
+                }
+
+                //暂停
+                function pauseFunc(){
+                    clearInterval(timer);
+                }
+
+                //给按钮添加点击事件
+                $("startOrStop").onclick = function (){
+                    //如果按钮不是false（开始状态），点击后将启动定时器
+                    if(!isRuning){
+                        $("startOrStop").innerHTML = "暂停";
+                        isRuning = true;
+                        startFunc();
+                    }else{
+                        $("startOrStop").innerHTML = "开始";
+                        isRuning = false;
+                        pauseFunc();
+                    }
+                }
+
+                //复位
+                $("reset").onclick = function (){
+                    clearInterval(timer); // 停止计时器
+                    i = 0; //毫米数为0
+                    isRuning = false;
+                    //复位所有时间
+                    $("startOrStop").innerHTML = "开始";
+                    $("sec").innerHTML = "00";
+                    $("hour").innerHTML = "00";
+                    $("min").innerHTML = "00";
+                }
+
+            }
+
+            //使时间是个位数时前面加个 0
+            function doubleNum(n){
+                if (n < 10){
+                    return "0" + n;
+                }else {
+                    return n;
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="second">
+            <span id="hour">00</span>
+            <span>:</span>
+            <span id="min">00</span>
+            <span>:</span>
+            <span id="sec">00</span>
+            <br />
+            <button id="startOrStop">开始</button>
+            <button id="reset">复位</button>
+        </div>
+    </body>
+</html>

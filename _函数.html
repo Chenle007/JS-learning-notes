@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*对两个数进行运算*/
+            function operation(num1,operator,num2){
+                switch (operator){
+                    case "+":
+                        return  num1+num2;
+                        break;
+                    case "-":
+                        return  num1-num2;
+                        break;
+                    case "*":
+                        return  num1*num2;
+                        break;
+                    case "/":
+                        return  num1/num2;
+                        break;
+                        default:
+                            alert("error")
+                        break;
+
+                }
+            }
+            alert(operation(4,"*",2));
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

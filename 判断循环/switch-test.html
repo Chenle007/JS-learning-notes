@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    /*    输入月份，判断有多少天    */
+    var month = 2;
+    var year = 1901;
+    switch (month){
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            alert("31天")
+            break;
+        case 2:
+            if (year % 4 == 0 && year / 100 != 0 || year / 400 == 0){
+                alert("29天")
+            }else{
+                alert("28天")
+            }
+            break;
+            default:
+                alert("30天")
+    }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

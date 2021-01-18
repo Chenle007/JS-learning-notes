@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #time{
+                width: 500px;height: 100px;
+                text-align: center;
+                line-height: 100px;
+                font-size: 26px;
+                border: 1px black solid;
+                margin: 50px auto;
+            }
+        </style>
+        <script>
+            function showTime(){
+                var d = new Date();
+                var year = d.getFullYear();
+                var month = d.getMonth() + 1;  // 0~11
+                var date = d.getDate();
+
+                var week = d.getDay(); // 0~6 0代表星期天
+                week = numOfChinese(week);
+
+                var hour = d.getHours();
+                var min = doubleNum(d.getMinutes());
+                var sec = doubleNum(d.getSeconds());
+
+                var str = year + "年" + month + "月" + date + "日 星期" + week + " " + hour + "：" + min + "：" + sec;
+                return str;
+            }
+            //星期几的数字转成中文
+            function numOfChinese(num){
+                var arr = ["日","一","二","三","四","五","六"];
+                return arr[num];
+            }
+
+            function doubleNum(n){
+                if (n < 10){
+                    return "0" + n;
+                }else {
+                    return n;
+                }
+            }
+
+            setInterval(function(){
+                var oDiv = document.getElementById("time");
+                oDiv.innerHTML = showTime();
+            },1000)
+        </script>
+    </head>
+    <body>
+        <div id="time">显示当前时间</div>
+    </body>
+</html>

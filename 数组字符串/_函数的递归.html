@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+
+            递归：
+                满足以下三个特点：
+                    1.函数自己调用自己
+                    2.一般情况下有参数
+                    3.一般情况下有return
+
+             */
+
+           /* /!*计算1~n的和*!/
+            function sum(n){
+                var res = 0;
+                for (var i = 1; i <= n; i++){
+                    res += i;
+                }
+                return res;
+            }
+            alert(sum(5));*/
+
+
+            /* 递归计算1~n的和 */
+            function sum(n){
+               if (n == 1){
+                   return 1;
+               }
+               return sum(n - 1) + n;
+            }
+            alert(sum(5));
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

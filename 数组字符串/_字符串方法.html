@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                charCodeAt();
+                    格式：字符串.charCodeAt(下标)
+                    功能：访问字符串中对应下标字符的ASCII码值
+            */
+            var str = "hello";
+            alert(str.charCodeAt(1));
+
+            /*
+                String.fromCharCode();
+                    功能:String.fromCharCode(码值1,码值2...);
+                    返回值：组成的字符串
+             */
+
+            var str = String.fromCharCode(97,98,99,100);
+            alert(str);
+
+
+
+
+
+            /*
+                字符串查找
+                    indexOf()
+                        格式supStr.indexOf(subStr, start);
+                        参数：第一个参数，查找的字符串
+                             start 从哪个下标开始查找，如果不传入默认为从0开始
+                        功能：在supStr中查找subStr第一次出现的位置，从start下标开始
+                        返回值为-1说明没有找到。
+             */
+
+           /* var supStr = "abcabcabc";
+            var subStr = "abc";
+
+            var index = supStr.indexOf(subStr,1);//从下标1开始查找
+            alert(index);*/
+
+
+
+
+            /*
+                lastIndexOf(); 与indexOf相似，查找最后出现的位置。
+                                查找下标是从右往左
+             */
+
+
+            /*
+                search()
+                    格式：supStr.search(subStr);
+                    参数：字符串/正则表达式
+                    功能：在supStr中查找subStr第一次出现的位置
+                    返回值： -1 没有查找到
+
+                    正则表达式：
+                        修饰符 i 忽略大小写    g 全局匹配
+             */
+            var supStr = "Abcabcabc";
+            var subStr = /abc/g;
+            var index = supStr.search(subStr);
+            alert(index);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

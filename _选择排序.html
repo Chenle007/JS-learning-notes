@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                选择排序：
+                    选出一个位置，这个位置上的数和后面每一个数都进行比较，比较出大小就交换位置。
+             */
+            /*
+                比较的轮数 = 数组长度 - 1
+                每一轮比较次数 = 数组长度 - 当前轮数；
+             */
+            var arr = [9,8,7,6,5,4,3,2,1];
+
+            for (var i = 0; i < arr.length - 1; i++){
+                //被比较数的下标
+                for (var j = i + 1; j < arr.length; j++){
+                    if (arr[i] > arr[j]){
+                        var tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+                    }
+                }
+            }
+            alert(arr);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

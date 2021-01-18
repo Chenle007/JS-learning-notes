@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                字符串提取：
+                    substring
+                        格式：字符串.substring(start, end);
+                        功能：将字符串中 [start, end) 提取这部分字符串，生成新字符串
+                        返回值： 新生成的字符串。
+
+                    substr
+                        格式：字符串.substr(start, length);
+                        返回值： 新生成的字符串。
+             */
+            /*var str = "hello";
+            // var newStr = str.substring(1,4); 下标1开始下标4结束（不包含4）
+             var newStr = str.substr(1,4); //下标从1开始 长度为4
+            alert(newStr);
+            alert(str);*/
+
+
+
+            /*
+                replace()
+                    格式：supStr.replace(oldSrt, newStr);
+                    功能：用newStr将oldSrt替换掉，生成新字符串
+                    参数：
+                        第一个参数传入的是字符串，只能替换一次
+                        第一个参数 正则表达式
+                            /xxx/ig   i 忽略大小写       g 全局匹配
+                        返回值：替换成的新数组
+             */
+            var str = "how are aRe are you";
+            // var newStr = str.replace("are","old are");
+            var newStr = str.replace(/are/ig,"old are");
+            alert(newStr);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
