@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                使用解构的好处
+                    1 交换两个数
+                    2 函数可以返回多个值
+                    3 函数可以定义参数，和传入参数的顺序改变
+                        【注】参数可以附带默认值
+             */
+            var [x, y] = [10, 20];
+            [x, y] = [20, 10]; //交换两个数
+           // alert(x + "," + y);
+
+            function show(){
+                return["结果1","结果2","结果3"];
+            }
+            var [a,b,c] = show();
+            // alert(a + ',' + c); //可以返回两个结果
+
+            // function shouSelf(name,age,sex){
+            //     alert("我叫" + name + "今年" + age + "," + "是一位" + sex + "性");
+            // }
+           // shouSelf("小红",18,"女");
+            function shouSelf({name,age,sex = "男"}){
+                alert("我叫" + name + "今年" + age + "," + "是一位" + sex + "性");
+            }
+
+            // shouSelf({
+            //     age:18,
+            //     sex:"女",
+            //     name:"小红"
+            // })
+
+            /*
+                ECMA6字符串
+                反引号 ``
+                    1 ECMA6字符串中换行 代码缩进都能体现出来
+                    2 ${变量/表达式/函数调用}
+            */
+
+            var str = `hello
+            world`;
+            //alert(str);
+
+            function shouSelf2({name,age,sex = "男"}){
+                alert(`我叫${name}，今年${age}岁，是一位${sex}性`);
+            }
+            shouSelf({
+                age:18,
+                sex:"女",
+                name:"小红"
+            })
+        </script>
+    </head>
+    <body>
+
+    </body>
 </html>

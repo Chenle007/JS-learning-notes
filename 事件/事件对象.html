@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                事件绑定：
+                    元素节点.on + 事件类型 = 匿名函数;
+                    【注】系统会在事件对象一旦完成时，生成一个事件对象
+
+                    触发事件的时候，系统会自动去调用事件绑定的函数
+             */
+            var show = function (ev){
+
+            }
+            window.onload = function (){
+                var oBtn = document.getElementById("btn");
+                oBtn.onclick = function (ev){
+                    //事件对象获取
+                   var e = ev || window.event;
+                    alert(e);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id="btn">按钮</button>
+    </body>
 </html>

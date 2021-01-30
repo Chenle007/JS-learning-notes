@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                document.write()
+                    【注】会覆盖页面上所有内容
+
+                creatElement()
+                    格式：document.creatElement(标签名);
+                    返回值：创建好的这个节点
+
+                appendChild()
+                    格式：node1.appendChild(node2);
+                    功能：将node2插入到node1的子节点末尾
+
+                createTextNode()
+                    格式：document.createTextNode(文本);
+                    功能：创建文本节点（纯文本）
+
+                insertBefore()
+                    格式：box1.parentNode.insertBefore(box2,box1);
+                    功能：将box2插入到box1前面
+
+                replaceChild()
+                    格式：box1.parentNode. replaceChild()(box2,box1);
+                    功能：用box2节点将box1节点替换
+
+                cloneNode()
+                    格式：node.cloneNode()
+                    格式2：node.cloneNode(true) 元素节点和本身节点
+                    返回值：克隆出来的新节点
+
+                removeChild()
+                    格式：box.parentNode.removeChild(box);
+                    功能：将box节点从页面上删除
+
+           */
+
+          window.onload = function (){
+                var oBtn = document.getElementById("btn1");
+                var oDiv = document.getElementById("div1");
+                oBtn.onclick = function (){
+                    var oP = document.createElement("p");
+                    var oTxt = document.createTextNode("我是插入的文本");
+                    oP.appendChild(oTxt);//将oTxt插入到p标签里面
+                   // oDiv.appendChild(oP);//将p标签插入到div的末端
+                    document.body.insertBefore(oP,oDiv);//将oP节点插入到oDiv节点前
+                }
+            }
+         </script>
+    </head>
+    <body>
+        <div id="div1">
+            <em>em文本</em>
+            div文本
+            <strong>strong文本</strong>
+        </div>
+        <button id="btn1">节点操作</button>
+    </body>
 </html>

@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #div1{
+                width: 100px;height: 120px;
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            window.onload = function (){
+                const oDiv = document.getElementById("div1");
+                window.onkeydown = function (){
+                    const xhr = new XMLHttpRequest();
+                    //设置响应体数据类型
+                    xhr.responseType = "json";
+                    xhr.open("GET","http://127.0.0.1:8000/json-server");
+                    xhr.send();
+                    xhr.onreadystatechange = function (){
+                        if (xhr.readyState == 4){
+                            if (xhr.status >= 200 && xhr.status < 300){
+                                //手动转换
+                                // let data = JSON.parse(xhr.response);
+                                // console.log(data);
+                                // oDiv.innerHTML = data.name;
+                                console.log(xhr.response);
+                                oDiv.innerHTML = xhr.response.name;
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1"></div>
+    </body>
 </html>

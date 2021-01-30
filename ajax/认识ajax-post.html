@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #div1{
+                width: 80px;height: 30px;
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            window.onload = function (){
+                //获取元素
+                const oDiv = document.getElementById("div1");
+                oDiv.onmouseover = function (){
+                    //创建对象
+                    const xhr = new XMLHttpRequest();
+                    //初始化 设置请求类型和url
+                    xhr.open("post","http://127.0.0.1:8000/server");
+                    //设置请求头
+                    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                    //发送
+                    xhr.send("a=100&b=200&c=300");
+                    //事件绑定
+                    xhr.onreadystatechange = function (){
+                        //判断服务端返回结果
+                        if(xhr.readyState == 4){
+                            if (xhr.status >= 200 && xhr.status < 300){
+                                oDiv.innerHTML = xhr.response;
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1"></div>
+    </body>
 </html>

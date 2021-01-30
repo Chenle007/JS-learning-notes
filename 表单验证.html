@@ -1,10 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #div1{
+                width: 250px;height: 300px;
+                border: 1px solid black;
+                margin: 20px auto;
+                text-align: center;
+            }
+            #div1 input{
+                width: 200px;height: 25px;
+                margin: 10px 20px;
+            }
+            #div1 span{
+                font-size: 12px;
+            }
+            #div1 .testCode{
+                width: 50px;height: 25px;
+                float: left;
+                background-color: gray;
+                margin-left: 25px;
+            }
+        </style>
+        <script>
+            window.onload = function (){
+                var oDiv1 = document.getElementById("div1");
+                var oInput = document.getElementById("username");
+                var oSpan = document.getElementById("username_span");
+                var oPass = document.getElementById("password");
+                var oTestCode = oDiv1.getElementsByClassName("testCode");
+
+                oInput.onblur = function (){
+                    var oValue = oInput.value;
+                    if(oValue.length < 6 || oValue.length > 18){
+                        oSpan.innerHTML = "❗长度应为6~18个字符"
+                        oSpan.style.color = "red";
+                    }else if (!/^[a-zA-Z]/.test(oValue[0])){
+                        oSpan.innerHTML = "❗首字母必须是字母"
+                        oSpan.style.color = "red";
+                    }else if (/\W/.test(oValue)){
+                        oSpan.innerHTML = "❗用户名必须是字母数字下划线组成"
+                        oSpan.style.color = "red";
+                    }else {
+                        oSpan.innerHTML = "√ 该用户名可用"
+                        oSpan.style.color = "green";
+                    }
+                }
+                oPass.onkeyup = function (){
+                    var oPasswd = this.value;
+                    //每次触发之前，先将上一次的颜色都变为灰色
+                    for (var i = 0; i < oTestCode.length; i++){
+                        oTestCode[i].style.backgroundColor = "gray";
+                    }
+                    if(oPasswd.length >= 6){
+                        // 开始密码强度验证 弱：纯数字 中：两两组合 强：三种都有
+                        if(/^\d+$/.test(oPasswd) || /^[a-z]+$/.test(oPasswd) || /^[A-Z]+$/.test(oPasswd)){
+                            oTestCode[0].style.backgroundColor = "blue";
+                        }else if(/[\d]/.test(oPasswd) && /[a-z]/.test(oPasswd) && /[A-Z]/.test(oPasswd)){
+                            oTestCode[2].style.backgroundColor = "green";
+                        }else{
+                            oTestCode[1].style.backgroundColor = "orange";
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">
+            <input id="username" type="text" placeholder="用户名">
+            <span id="username_span">6~18个字符，可使用数字 字母 下划线</span>
+            <input id="password" type="password" placeholder="密码">
+            <div class="testCode">弱</div>
+            <div class="testCode">中</div>
+            <div class="testCode">强</div>
+        </div>
+    </body>
 </html>

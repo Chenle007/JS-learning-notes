@@ -1,10 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+
+                childNodes      访问当前节点下所有子节点
+                firstChild      访问字节中的首位
+                lastChild       访问子节点中的最后一位
+                nextSibling     访问当前节点兄弟节点中的下一个节点
+                previousSibling       访问当前节点兄弟节点中的上一个节点
+
+                【注】上述属性都包含文本节点
+
+                【注】下述这些方法只获取子节点中的元素节点，不包含文本（IE8以下不兼容）
+                children
+                firstElementChild
+                lastElementChild
+                nextElementSibling
+                lastElementSibling
+
+                nodeType        nodeName            nodeValue
+        元素节点    1               标签名                 null
+        属性节点    2               属性名                 属性值
+        文本节点    3               #text                 文本内容
+
+             */
+
+            window.onload = function (){
+                var oDiv = document.getElementById("div1");
+                alert(oDiv.nextSibling);
+            }
+
+
+            /*
+                attributes  获取当前元素节点上所有属性节点
+             */
+            window.onload = function (){
+                var oDiv2 = document.getElementById("div2");
+                alert(oDiv2.attributes.getNamedItem("title").nodeName); //属性名
+                alert(oDiv2.attributes.getNamedItem("title").nodeValue); //属性值
+                alert(oDiv2.attributes.getNamedItem("title").nodeType);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1"><em>em文本</em>div文本<strong>strong文本</strong></div>
+        <div id="div2" class="div2" title="hello"></div>
+    </body>
 </html>

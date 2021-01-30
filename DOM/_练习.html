@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #div1{
+                width: 250px;
+                height: 200px;
+                border: 1px black solid;
+                font-size: 18px;
+                text-align: center;
+                line-height: 200px;
+                margin: 50px auto;
+            }
+        </style>
+        <script src="tool.js"></script>
+        <script>
+            /*
+                颜色随机
+                rgba(255,255,255,1);
+                parseInt(Math.random() * 256);
+             */
+            function randomColor(){
+                var str = "rgba(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ","
+                    + parseInt(Math.random() * 256) + " , 1)";
+                return str;
+            }
+
+            window.onload = function (){
+                var oDiv = document.getElementById("div1");
+                var speed = 5; //变化速度为5
+                var count = 0; //记录变化次数
+
+                setInterval(function (){
+                    oDiv.style.color = randomColor();
+                    //将上一次的字体大小取出
+                    var iCur = parseInt(getStyle(oDiv,"fontSize")); // 因为取出来的是18px,所以保留前面数字 取整
+                    //变化字体大小重新赋值回去
+                    oDiv.style.fontSize = iCur + speed + "px"; //因为icur是取整的 所以重新赋值也要加上px
+                    count ++;
+
+                    if (count % 6 ==0){
+                        speed *= -1;
+                    }
+                },1000);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">文本内容</div>
+    </body>
 </html>

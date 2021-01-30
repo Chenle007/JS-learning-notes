@@ -1,0 +1,23 @@
+{
+  "name": "JavaScript",
+  "version": "1.0.0",
+  "main": "node_modules/body-parser/tool.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chenle007/JS-learning-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chenle007/JS-learning-notes/issues"
+  },
+  "homepage": "https://github.com/Chenle007/JS-learning-notes#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

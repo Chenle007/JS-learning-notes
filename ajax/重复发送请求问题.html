@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            //获取元素对象
+            const oBtn = document.querySelectorAll("button");
+            let x = null;
+            //标识变量
+            let isSending = false;//是否正在发送Ajax请求
+            oBtn[0].onclick = function (){
+                //如果正在发送则取消该请求，创建一个新的请求
+                if (isSending){
+                    x.abort();
+                }
+                x = new XMLHttpRequest();
+                isSending = true;
+                x.open("GET","http://127.0.0.1:8000/delay");
+                x.send();
+                x.onreadystatechange = function (){
+                    if (x.readyState == 4){
+                        //修改标识变量
+                        isSending = false;
+                    }
+                }
+            }
+            //abort 方法取消请求
+            oBtn[1].onclick = function (){
+                x.abort();
+            }
+        }
+    </script>
 </head>
 <body>
-$END$
+<button>发送请求</button>
+<button>取消请求</button>
 </body>
 </html>

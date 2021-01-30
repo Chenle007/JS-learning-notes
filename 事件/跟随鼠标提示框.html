@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            a{
+                display: block;
+                width: 50px;height: 40px;
+                margin: 50px 60px;
+            }
+            div{
+                width: 100px;height: 50px;
+                display: none;
+                background: gray;
+                color: white;
+                position: absolute;
+            }
+        </style>
+        <script>
+            var arr1 = [111,222,333,444];
+            window.onload = function (){
+                var oA = document.getElementsByTagName("a")
+                var oDiv = document.getElementById("div1");
+                for (var i = 0; i < oA.length; i++){
+                    oA[i].index = i;
+                    oA[i].onmouseover = function (){
+                        oDiv.innerHTML = arr1[this.index];
+                        oDiv.style.display = "block";
+                    }
+                    oA[i].onmouseout = function (){
+                        oDiv.style.display = "none";
+                    }
+                    //添加鼠标移动事件
+                    oA[i].onmousemove = function(ev){
+                        var e = ev;
+                        oDiv.style.left = e.clientX + 5 + "px";
+                        oDiv.style.top = e.clientY + 5 + "px";
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <div id="div1"></div>
+    </body>
 </html>

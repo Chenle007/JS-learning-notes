@@ -1,10 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #div{
+                position: absolute;
+            }
+            #div1{
+                background: brown;
+                height: 80px; width: 200px;
+            }
+            #div2{
+                background: darkseagreen;
+                height: 250px;width: 200px;
+            }
+            #div1 input{
+                width: 190px;
+                height: 30px;
+                font-size: 16px;
+            }
+            #div1 button{
+                margin: 10px;
+            }
+            #div2 div{
+                border-bottom: 1px dashed gray;
+            }
+            #div2 div button{
+                position: absolute;
+                left: 183px;
+            }
+        </style>
+        <script src="tool.js"></script>
+        <script>
+
+            window.onload = function (){
+                var oDiv = document.getElementById("div");
+                var oDiv1 = document.getElementById("div1");
+                var oDiv2 = document.getElementById("div2");
+
+                //获取div下所有的button
+                var oBtns = oDiv1.getElementsByTagName("button");
+                var oInput = document.getElementById("input1");
+
+                //获取焦点时
+                oInput.onfocus = function (){
+                    this.placeholder = "";
+                }
+                //失去焦点时
+                oInput.onblur = function (){
+                    this.placeholder = "请输入文本";
+                }
+
+
+                //分别给三个按钮添加点击事件
+                oBtns[0].onclick = function (){
+                    if (!oInput.value){
+                        alert("输入不能为空");
+                    }else{
+                        //获取到输入框的内容，创建节点添加到页面上
+                        var oDiv = document.createElement("div");
+                        var oTxt = document.createTextNode(oInput.value);
+
+                        oDiv.appendChild(oTxt); //将新建的oTxt插入到新建的div里面
+                        oDiv.style.backgroundColor = randomColor();
+                        oDiv2.appendChild(oDiv);//将新建的div插入到div2里面
+                        oInput.value = "";
+
+
+                        //获取button内容 创建节点添加到div2中
+                        var oDivBtn = document.createElement("button");
+                        var oDelete = document.createTextNode("X");
+                        oDivBtn.className = "del";
+
+                        oDivBtn.appendChild(oDelete);
+                        oDivBtn.onclick = function (){
+                            this.parentNode.remove();
+                        }
+                        oDiv.appendChild(oDivBtn);
+                    }
+                }
+
+                oBtns[1].onclick = function (){
+                         //删除最后一个节点
+                         oDiv2.removeChild(oDiv2.lastChild);
+                }
+                oBtns[2].onclick = function (){
+                      //拷贝最后一个节点，并添加到最后
+                         var newNode =  oDiv2.lastChild.cloneNode(true);
+                         if(typeof newNode.getElementsByClassName === "function"){
+                             newNode.getElementsByClassName("del")[0].onclick = function (){
+                                 this.parentNode.remove();
+                             }
+                         }
+
+                         oDiv2.appendChild(newNode);
+                }
+                oInput.onkeydown = function (ev){
+                    var e = ev || window.event;
+                    var which = e.which || e.keyCode;
+                    if (which == 13){
+                        oBtns[0].onclick();
+                    }
+                }
+                /*
+                    拖拽
+                    mousedown
+                        记录鼠标按下位置
+                        var offsetX = e.clientX - node.offsetLeft;
+                        var offsetY = e.clientY - node.offsetTop;
+                    mousemove
+                        鼠标移动一直保持相对位置
+                        node.style.left = e.clientX - offsetX + "px";
+                        node.style.top = e.clientY - offsetY + "px";
+                    mouseup
+                        取消拖拽
+                 */
+                     oDiv.onmousedown = function (ev){
+                        var e = ev || window.event;
+                        var offsetX = e.clientX - oDiv.offsetLeft;
+                        var offsetY = e.clientY - oDiv.offsetTop;
+
+                    document.onmousemove = function (ev){
+                        var e = ev || window.event;
+                        oDiv.style.left = e.clientX - offsetX + "px";
+                        oDiv.style.top = e.clientY - offsetY + "px";
+                    }
+                    document.onmouseup = function (){
+                        document.onmousemove = null;
+                    }
+                }
+            }
+
+
+        </script>
+    </head>
+    <body>
+    <div id="div">
+        <div id="div1">
+            <input type="text" id="input1" placeholder="请输入内容">
+            <button>增加</button>
+            <button>删除</button>
+            <button>复制</button>
+        </div>
+        <div id="div2">
+            <!--            <div><button>x</button></div>-->
+            <!--            <div>x</div>-->
+            <!--            <div>x</div>-->
+        </div>
+    </div>
+
+    </body>
 </html>

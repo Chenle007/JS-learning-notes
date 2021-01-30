@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                如果某一个函数通过new运算符去调用
+                    1 当前函数的this指向新创建的函数
+                    2 自动完成新建和return操作
+
+                这种通过new调用的函数，叫做构造函数，构造函数可以构造对象
+                【注】构造函数首字母一般大写
+             */
+            function Person(name, sex){
+                this.name = name;
+                this.sex = sex;
+            }
+           Person.prototype.showName = function (){
+               alert("我的名字是：" + this.name);
+           }
+            Person.prototype.showSex = function (){
+                alert("我的性别是：" + this.sex);
+            }
+            var p1 = new Person("小明","男");
+            p1.showName();
+            p1.showSex();
+            var p2 = new Person("小红","女");
+            p2.showName();
+            p2.showSex();
+        </script>
+    </head>
+    <body>
+
+    </body>
 </html>

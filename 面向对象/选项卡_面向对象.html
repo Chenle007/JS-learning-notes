@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #tabControl button{
+                width: 80px;height: 20px;
+                font-size: 12px;
+                margin: 0 5px;
+                background-color: gray;
+                color: white;
+            }
+            #tabControl .active{
+                background-color: orange;
+            }
+            #tabControl div{
+                width: 300px;height: 200px;
+                border: 1px black solid;
+                display: none;
+            }
+            #tabControl2{
+                position: absolute;
+                left: 500px;
+            }
+            #tabControl2 button{
+                width: 80px;height: 20px;
+                font-size: 12px;
+                margin: 0 5px;
+                background-color: gray;
+                color: white;
+            }
+            #tabControl2 .active{
+                background-color: orange;
+            }
+            #tabControl2 div{
+                width: 300px;height: 200px;
+                border: 1px black solid;
+                display: none;
+            }
+        </style>
+        <script>
+            function TabControl(id) {
+                //添加属性
+                var node = document.getElementById(id);
+                this.aBtns = node.getElementsByTagName("button");
+                this.aDivs = node.getElementsByTagName("div");
+
+                var _this = this;
+                for (var i = 0; i < this.aBtns.length; i++) {
+                    //找到当前按钮下标
+                    this.aBtns[i].index = i;
+                    this.aBtns[i].onclick = function (){
+                        _this.tab(this);
+                    };
+                }
+            }
+            //添加方法
+                TabControl.prototype.tab = function (_this){
+                //清除页面上所有按钮样式
+                    for (var i = 0; i < this.aBtns.length; i++){
+                        this.aBtns[i].className = "";
+                        this.aDivs[i].style.display = "none";
+                    }
+                    //获取当前按钮样式
+                    _this.className = "active";
+                    this.aDivs[_this.index].style.display = "block";
+                }
+            window.onload = function (){
+                new TabControl("tabControl");
+                new TabControl("tabControl2");
+            }
+        </script>
+    </head>
+    <body>
+    <div id="tabControl">
+        <button class="active">HTML</button>
+        <button>Css</button>
+        <button>Javascript</button>
+        <div style="display: block">HTML</div>
+        <div>Css</div>
+        <div>Javascript</div>
+    </div>
+    <div id="tabControl2">
+        <button class="active">HTML</button>
+        <button>Css</button>
+        <button>Javascript</button>
+        <div style="display: block">HTML</div>
+        <div>Css</div>
+        <div>Javascript</div>
+    </div>
+    </body>
 </html>

@@ -1,10 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                事件类型种类：
+                    1、鼠标事件
+                        click       单击
+                        dblclick    双击
+
+                        【注】经过子节点会重复触发
+                        mouseover   鼠标移入
+                        mouseout    鼠标移出
+
+                        mousemove   鼠标移动
+                        mousedown   鼠标按下
+                        mouseup     鼠标抬起
+
+                        【注】经过子节点不会重复触发
+                        mouseenter  鼠标移入
+                        mouseleave  鼠标移出
+                    2、键盘事件
+                        keydown     键盘按下
+                        keyup       键盘抬起
+                        keypress    键盘按下（仅支持字符键）
+
+                    HTML事件
+                        window事件
+                            load    页面加载完成后触发
+                            unload  页面刷新或关闭时触发 IE浏览器兼容
+                            scroll  页面滚动时触发
+                            resize  窗口发生大小时触发
+
+                        表单事件
+                            blur    失去焦点
+                            focus   获取焦点
+                            select  选中文本时触发
+                            change  当输入框文本被修改并失去焦点时触发
+
+                        form表单元素事件
+                            submit  点击submit上的按钮时触发
+                            reset   点击reset上的按钮触发
+             */
+
+            window.onload = function (){
+                var oBtn = document.getElementById("btn1");
+                // oBtn.ondblclick = function (){
+                //     alert("双击");
+                // }
+                // oBtn.onmouseover = function (){
+                //     this.style.backgroundColor = "red";
+                // }
+                // oBtn.onmouseout = function (){
+                //     this.style.backgroundColor = "green";
+                // }
+                oBtn.onmousedown = function (){
+                    this.innerHTML = "按下";
+                }
+                oBtn.onmouseup = function (){
+                    this.innerHTML = "抬起";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id="btn1">按钮</button>
+    </body>
 </html>

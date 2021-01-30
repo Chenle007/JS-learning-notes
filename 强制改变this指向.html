@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            function show(x,y){
+                alert(this);
+                alert(x + "," + y);
+            }
+            show.apply("apply",[10,200]);
+            /*
+                call  函数名.call();
+                    参数：第一个参数：传入该函数this指向的对象
+                        第二个参数开始，将原函数的参数往后填
+
+                apply  函数名.apply();
+                        第一个参数：传入该函数this指向的对象
+                        第二个参数：数组，里面存放原有的参数
+             */
+            /*
+                bind  预设this指向
+             */
+        </script>
+    </head>
+    <body>
+
+    </body>
 </html>

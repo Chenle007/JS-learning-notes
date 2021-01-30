@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                cookie
+                    可设置过期时间
+                    最大可存储4KB，每一个域名下最多存储50条数据（不同浏览器可能有差异）
+                   【注】只能字符串。一般只存储重要信息。登录 购物车 是否点赞 视频播放进度等
+             */
+
+            /*
+                encodeURIComponent("xxx") 将中文编译成对应字符
+                decodeURIComponent(xxx)   将对应字符编译成中文。
+             */
+
+            /*
+                expires  过期时间
+                    必须填写日期对象
+                    系统会自动清除过期的cookie
+             */
+            //获取n天后的日期
+            function afterOfDate(n){
+                var d = new Date();
+                var day = d.getDate();
+                d.setDate(n + day);
+                return d;
+            }
+
+            document.cookie = "username=xxx;expires=" + afterOfDate(7);
+
+            window.onload = function (){
+                var oBtn = document.getElementById("btn");
+                oBtn.onclick = function (){
+                    document.cookie = "username=;expires=" + afterOfDate(-1);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id="btn">清除cookie</button>
+    </body>
+</html>

@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            事件对象button属性
+                0   鼠标左键
+                1   鼠标滚轮
+                2   鼠标右键
+
+
+            获取当前鼠标位置
+                clientX  clientY 原点位置：可视窗口左上角（眼睛能看见的地方）
+
+                pageX    pageY   原点位置：整个页面左上角
+
+                screenX  screenY 原点位置：电脑屏幕左上角
+         */
+        window.onload = function (){
+            document.onmousedown = function (ev){
+                var e = ev || window.event;
+                alert(e.button);
+            }
+        }
+
+    </script>
 </head>
 <body>
-$END$
+
 </body>
 </html>

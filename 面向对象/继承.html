@@ -1,10 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            function Dog({name,type,age}){
+                //添加属性
+                this.name = name;
+                this.type = type;
+                this.age = age;
+            }
+            //通过构造函数原型添加方法
+            Dog.prototype = {
+                run:function (){
+                    alert(this.name + "飞快的奔跑");
+                },
+                showSelf:function (){
+                    alert(`这是一个${this.type}的，${this.age}岁，叫${this.name}的小狗`);
+                }
+            }
+            function Teddy({name,type,age,color}){
+                //继承父一级构造函数所有属性
+                Dog.call(this,{
+                    name:name,
+                    age:age,
+                    type:type
+                })
+                //添加自己的属性
+                this.color = color;
+            }
+
+            //原型链继承
+            for (var funName in Dog.prototype){
+                Teddy.prototype[funName] = Dog.prototype[funName];
+            }
+            //在子一级构造函数重写showSelf方法
+            Teddy.prototype.showSelf = function (){
+                alert(`这是一个${this.type}的，${this.age}岁，${this.color}的叫${this.name}的小狗`);
+            }
+
+            Teddy.prototype.showColor = function (){
+                alert(this.color);
+            }
+            var xiaohong = new Teddy({
+                name:"小红",
+                age:2,
+                type:"泰迪",
+                color:"红色"
+            })
+            // alert(xiaohong.name);
+            // alert(xiaohong.age);
+            xiaohong.showSelf();
+            alert(xiaohong.color);
+
+
+            var xiaohei = new Dog({
+                name:"小黑",
+                age:2,
+                type:"拉布拉多",
+                color:"黑色"
+            })
+            xiaohei.showSelf();
+            alert(xiaohei.showColor);
+            alert(xiaohei.color);
+        </script>
+    </head>
+    <body>
+
+    </body>
 </html>

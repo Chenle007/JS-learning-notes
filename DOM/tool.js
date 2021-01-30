@@ -1,3 +1,26 @@
+//拖拽
+function drag(node){
+    node.onmousedown = function (ev){
+        var e = ev || window.event;
+        var offsetX = e.clientX - node.offsetLeft;
+        var offsetY = e.clientY - node.offsetTop;
+
+        document.onmousemove = function (ev){
+            var e = ev || window.event;
+            node.style.left = e.clientX - offsetX + "px";
+            node.style.top = e.clientY - offsetY + "px";
+        }
+        document.onmouseup = function (){
+            document.onmousemove = null;
+        }
+    }
+}
+
+function randomColor(){
+    var str = "rgba(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ","
+        + parseInt(Math.random() * 256) + " , 1)";
+    return str;
+}
 
 //自定义byClassName方法
 function elementsByClassName(node, classStr){

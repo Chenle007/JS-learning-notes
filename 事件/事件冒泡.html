@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            /*
+                浏览器上自带一个特点：事件流
+                    事件冒泡：有里向外逐级触发
+                    事件捕获：有外向里逐级触发
+
+                阻止事件冒泡：
+                事件对象的属性和方法：
+                cancelBubble = true     stopPropagation()
+
+             */
+            //封装跨浏览器兼容的阻止事件冒泡
+            function stopBubble(e){
+                //e是事件对象
+                if (e.stopPropagation){
+                    e.stopPropagation();
+                }else{
+                    e.cancelBubble = true;
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
 </html>
